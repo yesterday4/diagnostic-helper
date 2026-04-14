@@ -1,0 +1,198 @@
+{
+  "symptoms": [
+	{"id": 1, "description": "engine won't start but is being turned over", "categories": ["engine", "electrical/lighting"]},
+	{"id": 2, "description": "squeaking noise when driving over bumps", "categories": ["suspension/steering"]},
+	{"id": 3, "description": "engine rpm's are unstable", "categories": ["engine"]},
+	{"id": 4, "description": "droning sound while moving", "categories": ["suspension/steering"]},
+	{"id": 5, "description": "crackling sound when moving with steering wheel turned", "categories": ["suspension/steering"]},
+	{"id": 6, "description": "clicking sound when trying to start the engine", "categories": ["engine", "electrical/lighting"]},
+	{"id": 7, "description": "squealing sound when engine is on", "categories": ["engine"]},
+	{"id": 8, "description": "constant beeping when reverse in engaged", "categories": ["electrical/lighting"]},
+	{"id": 9, "description": "steering wheel vibrates when moving", "categories": ["suspension/steering", "tyres/wheels"]},
+	{"id": 10, "description": "constant squealing while moving", "categories": ["brakes", "suspension/steering"]},
+	{"id": 11, "description": "ticking sound when engine is on", "categories": ["engine"]},
+	{"id": 12, "description": "difficulty engaging gears", "categories": ["transmission/clutch"]},
+	{"id": 13, "description": "grinding/squeaking while breaking", "categories": ["brakes"]},
+	{"id": 14, "description": "wheel rim is getting hot", "categories": ["brakes", "tyres/wheels"]},
+	{"id": 15, "description": "car able to roll with parking brake engaged", "categories": ["brakes"]},
+	{"id": 16, "description": "smell after using clutch", "categories": ["transmission/clutch"]},
+	{"id": 17, "description": "brake pedal can travel too far", "categories": ["brakes"]},
+	{"id": 18, "description": "clutch pedal can travel too far", "categories": ["transmission/clutch"]},
+	{"id": 19, "description": "poor acceleration", "categories": ["engine", "transmission/clutch"]},
+	{"id": 20, "description": "oil level drops quickly", "categories": ["engine", "fluids"]},
+	{"id": 21, "description": "poor gas mileage", "categories": ["engine"]},
+	{"id": 22, "description": "coolant looks milky", "categories": ["engine", "fluids"]},
+	{"id": 23, "description": "turbocharger is making a whistling noise", "categories": ["engine"]},
+	{"id": 24, "description": "poor braking performance", "categories": ["brakes"]},
+	{"id": 25, "description": "smell of exhaust gases inside the car", "categories": ["engine", "climate/comfort"]},
+	{"id": 26, "description": "car is too bouncy when driving over bumps", "categories": ["suspension/steering"]},
+	{"id": 27, "description": "skiding while stopping", "categories": ["brakes", "tyres/wheels"]},
+	{"id": 28, "description": "oversteer/understeer", "categories": ["brakes", "suspension/steering", "tyres/wheels"]},
+	{"id": 29, "description": "windows fogging", "categories": ["climate/comfort"]},
+	{"id": 30, "description": "steering wheel is difficult to turn", "categories": ["suspension/steering"]},
+	{"id": 31, "description": "engine overheating", "categories": ["engine"]},
+	{"id": 32, "description": "car pulling to one side while moving", "categories": ["suspension/steering"]},
+	{"id": 33, "description": "engine sound has become louder", "categories": ["engine"]},
+	{"id": 34, "description": "poor visibility at night", "categories": ["electrical/lighting"]},
+	{"id": 35, "description": "no cold air from climate control", "categories": ["climate/comfort"]},
+	{"id": 36, "description": "no hot air from climate control", "categories": ["climate/comfort"]},
+	{"id": 37, "description": "rpm's are increasing but no acceleration", "categories": ["engine", "transmission/clutch"]},
+	{"id": 38, "description": "white smoke from exhaust", "categories": ["engine"]},
+	{"id": 39, "description": "black/grey smoke from exhaust", "categories": ["engine"]},
+	{"id": 40, "description": "bluish smoke from exhaust", "categories": ["engine"]},
+	{"id": 41, "description": "dim lighting", "categories": ["electrical/lighting"]},
+	{"id": 42, "description": "battery light is on", "categories": ["electrical/lighting"]},
+	{"id": 43, "description": "steering wheel vibrates when braking", "categories": ["suspension/steering", "brakes"]},
+	{"id": 44, "description": "vibrations when braking", "categories": ["suspension/steering", "brakes"]},
+	{"id": 45, "description": "coolant level drops quickly", "categories": ["engine", "fluids"]}
+  ],
+  
+  "problems": [
+    {
+      "id": 1,
+      "name": "Worn brake pads",
+      "category": "brakes",
+      "severity": "high",
+      "base_probability": 0.8,
+      "symptom_ids": [10, 13, 17, 24],
+      "diagnostic_steps": [
+        "Inspect brake pad thickness visually then using a gauge if needed",
+        "Check rotor surface for scoring or grooves",
+        "Test brake pedal feel and travel distance",
+        "Check for uneven wear between left and right pads",
+		"Replace the brake pads if needed"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Warped front brake rotors",
+      "category": "brakes",
+      "severity": "moderate",
+      "base_probability": 0.65,
+      "symptom_ids": [43],
+      "diagnostic_steps": [
+        "Check the front brake rotors visually",
+        "Check the runout of the rotors",
+        "Replace the rotors if needed"
+      ]
+    },
+	{
+      "id": 3,
+      "name": "Warped rear brake rotors",
+      "category": "brakes",
+      "severity": "moderate",
+      "base_probability": 0.65,
+      "symptom_ids": [44],
+      "diagnostic_steps": [
+        "Check the front brake rotors visually",
+        "Check the runout of the rotors",
+        "Replace the rotors if needed"
+      ]
+    },
+	{
+      "id": 4,
+      "name": "Seized brake caliper piston/slide pins",
+      "category": "brakes",
+      "severity": "high",
+      "base_probability": 0.7,
+      "symptom_ids": [10, 14, 32],
+      "diagnostic_steps": [
+        "Remove the calipers",
+        "Check if the pistons and slide pins can me moved",
+        "Replace/regrease the necessary parts"
+      ]
+    },
+	{
+      "id": 5,
+      "name": "Fuel/compression/spark problems",
+      "category": "engine",
+      "severity": "high",
+      "base_probability": 0.4,
+      "symptom_ids": [1],
+      "diagnostic_steps": [
+		"Check if each cylinder has the correct compression pressure",
+        "Check that the correct fuel pressure is present",
+        "Check that the injector opening signal is present",
+        "If it is a gasoline engine, check for spark"
+      ]
+    },
+	{
+      "id": 6,
+      "name": "Worn/dry suspension bushings",
+      "category": "suspension/steering",
+      "severity": "moderate",
+      "base_probability": 0.65,
+      "symptom_ids": [2, 32],
+      "diagnostic_steps": [
+        "Check the bushings visually",
+        "If tears are present or the bushing has moved out of place or excessive movement is present - replace it",
+        "If the bushing is too dry - spray it with silicon grease"
+      ]
+    },
+	{
+      "id": 7,
+      "name": "",
+      "category": "",
+      "severity": "",
+      "base_probability": ,
+      "symptom_ids": [],
+      "diagnostic_steps": [
+        "",
+        "",
+        ""
+      ]
+    },
+	{
+      "id": 8,
+      "name": "",
+      "category": "",
+      "severity": "",
+      "base_probability": ,
+      "symptom_ids": [],
+      "diagnostic_steps": [
+        "",
+        "",
+        ""
+      ]
+    },
+	{
+      "id": 9,
+      "name": "",
+      "category": "",
+      "severity": "",
+      "base_probability": ,
+      "symptom_ids": [],
+      "diagnostic_steps": [
+        "",
+        "",
+        ""
+      ]
+    },
+	{
+      "id": 10,
+      "name": "",
+      "category": "",
+      "severity": "",
+      "base_probability": ,
+      "symptom_ids": [],
+      "diagnostic_steps": [
+        "",
+        "",
+        ""
+      ]
+    },
+	{
+      "id": 11,
+      "name": "",
+      "category": "",
+      "severity": "",
+      "base_probability": ,
+      "symptom_ids": [],
+      "diagnostic_steps": [
+        "",
+        "",
+        ""
+      ]
+    },
+  ]
+}

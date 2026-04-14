@@ -5,11 +5,11 @@
 	{"id": 3, "description": "engine rpm's are unstable", "categories": ["engine"]},
 	{"id": 4, "description": "droning sound while moving", "categories": ["suspension/steering"]},
 	{"id": 5, "description": "crackling sound when moving with steering wheel turned", "categories": ["suspension/steering"]},
-	{"id": 6, "description": "clicking sound when trying to start the engine", "categories": ["engine", "electrical/lighting"]},
+	{"id": 6, "description": "clicking sound when trying to start the engine and the starter does not turn", "categories": ["engine", "electrical/lighting"]},
 	{"id": 7, "description": "squealing sound when engine is on", "categories": ["engine"]},
-	{"id": 8, "description": "constant beeping when reverse in engaged", "categories": ["electrical/lighting"]},
+	{"id": 8, "description": "", "categories": [""]},
 	{"id": 9, "description": "steering wheel vibrates when moving", "categories": ["suspension/steering", "tyres/wheels"]},
-	{"id": 10, "description": "constant squealing while moving", "categories": ["brakes", "suspension/steering"]},
+	{"id": 10, "description": "squealing while moving", "categories": ["brakes", "suspension/steering", "engine"]},
 	{"id": 11, "description": "ticking sound when engine is on", "categories": ["engine"]},
 	{"id": 12, "description": "difficulty engaging gears", "categories": ["transmission/clutch"]},
 	{"id": 13, "description": "grinding/squeaking while breaking", "categories": ["brakes"]},
@@ -41,7 +41,7 @@
 	{"id": 39, "description": "black/grey smoke from exhaust", "categories": ["engine"]},
 	{"id": 40, "description": "bluish smoke from exhaust", "categories": ["engine"]},
 	{"id": 41, "description": "dim lighting", "categories": ["electrical/lighting"]},
-	{"id": 42, "description": "battery light is on", "categories": ["electrical/lighting"]},
+	{"id": 42, "description": "battery light is on when engine is on", "categories": ["electrical/lighting"]},
 	{"id": 43, "description": "steering wheel vibrates when braking", "categories": ["suspension/steering", "brakes"]},
 	{"id": 44, "description": "vibrations when braking", "categories": ["suspension/steering", "brakes"]},
 	{"id": 45, "description": "coolant level drops quickly", "categories": ["engine", "fluids"]}
@@ -68,7 +68,7 @@
       "name": "Warped front brake rotors",
       "category": "brakes",
       "severity": "moderate",
-      "base_probability": 0.65,
+      "base_probability": 0.6,
       "symptom_ids": [43],
       "diagnostic_steps": [
         "Check the front brake rotors visually",
@@ -81,7 +81,7 @@
       "name": "Warped rear brake rotors",
       "category": "brakes",
       "severity": "moderate",
-      "base_probability": 0.65,
+      "base_probability": 0.6,
       "symptom_ids": [44],
       "diagnostic_steps": [
         "Check the front brake rotors visually",
@@ -94,7 +94,7 @@
       "name": "Seized brake caliper piston/slide pins",
       "category": "brakes",
       "severity": "high",
-      "base_probability": 0.7,
+      "base_probability": 0.65,
       "symptom_ids": [10, 14, 32],
       "diagnostic_steps": [
         "Remove the calipers",
@@ -126,70 +126,143 @@
       "diagnostic_steps": [
         "Check the bushings visually",
         "If tears are present or the bushing has moved out of place or excessive movement is present - replace it",
-        "If the bushing is too dry - spray it with silicon grease"
+        "If the bushings are too dry - spray them with silicon grease"
       ]
     },
 	{
       "id": 7,
-      "name": "",
-      "category": "",
-      "severity": "",
-      "base_probability": ,
-      "symptom_ids": [],
+      "name": "Blown head gasket",
+      "category": "engine",
+      "severity": "high",
+      "base_probability": 0.3,
+      "symptom_ids": [19, 20, 21, 22, 31, 38, 40, 45],
       "diagnostic_steps": [
-        "",
-        "",
-        ""
+        "Do a combustion gas test",
+        "If combustion gases are indeed present in the cooling system - replace the headgasket"
       ]
     },
 	{
       "id": 8,
-      "name": "",
-      "category": "",
-      "severity": "",
-      "base_probability": ,
-      "symptom_ids": [],
+      "name": "Alternator has stopped working",
+      "category": "electrical/lighting",
+      "severity": "high",
+      "base_probability": 0.5,
+      "symptom_ids": [41, 42],
       "diagnostic_steps": [
-        "",
-        "",
-        ""
+        "Check the battery voltage with the engine on",
+        "If the voltage is below 13.5V, and the serpentine belt is ok alternator repair/replacement is needed"
       ]
     },
 	{
       "id": 9,
-      "name": "",
-      "category": "",
-      "severity": "",
-      "base_probability": ,
-      "symptom_ids": [],
+      "name": "Leak in the exhaust system",
+      "category": "engine",
+      "severity": "moderate",
+      "base_probability": 0.6,
+      "symptom_ids": [21, 25, 33],
       "diagnostic_steps": [
-        "",
-        "",
-        ""
+        "Visually check the exhaust system",
+        "Repair/replace any components if needed"
       ]
     },
 	{
       "id": 10,
-      "name": "",
-      "category": "",
-      "severity": "",
-      "base_probability": ,
-      "symptom_ids": [],
+      "name": "Leak in the intake system",
+      "category": "engine",
+      "severity": "high",
+      "base_probability": 0.4,
+      "symptom_ids": [3, 19, 21, 23],
       "diagnostic_steps": [
-        "",
-        "",
-        ""
+        "Visually check the exhaust system",
+        "If needed, connect a smoke machine to find less visible/smaller leaks",
+        "Repair/replace any components if needed"
       ]
     },
 	{
       "id": 11,
-      "name": "",
-      "category": "",
-      "severity": "",
-      "base_probability": ,
-      "symptom_ids": [],
+      "name": "Worn/degraded tyres",
+      "category": "tyres/wheels",
+      "severity": "high",
+      "base_probability": 0.75,
+      "symptom_ids": [24, 27, 28],
       "diagnostic_steps": [
-        "",
+        "Visually check the tyres",
+        "Check tread wear using calipers/gauge",
+        "Check that the tyres are not older than 5 years",
+		"Replace the tyres if needed"
+      ]
+    },
+	{
+      "id": 12,
+      "name": "Worn wheel bearing",
+      "category": "suspension/steering",
+      "severity": "high",
+      "base_probability": 0.6,
+      "symptom_ids": [4, 5, 9, 14],
+      "diagnostic_steps": [
+        "Lift the car and check the wheels for non-rotational movement",
+        "Turn the wheels, and listen for any abnormal sounds",
+        "Replace the bearing if needed"
+      ]
+    },
+	{
+      "id": 13,
+      "name": "Worn CV joint",
+      "category": "suspension/steering",
+      "severity": "moderate",
+      "base_probability": 0.5,
+      "symptom_ids": [5],
+      "diagnostic_steps": [
+        "Check the CV joint for radial play",
+        "Remove the boot from the CV joint and check for wear",
+        "If needed replace and regrease the CV joint and boot"
+      ]
+    },
+	{
+      "id": 14,
+      "name": "Leaking fuel injector",
+      "category": "engine",
+      "severity": "high",
+      "base_probability": 0.35,
+      "symptom_ids": [3, 19, 21, 25, 38, 39],
+      "diagnostic_steps": [
+        "Check 02 values in exhaust gases",
+        "If 02 values are low - send the injectors for testing"
+      ]
+    },
+	{
+      "id": 15,
+      "name": "Discharged/bad battery",
+      "category": "electrical/lighting",
+      "severity": "high",
+      "base_probability": 0.7,
+      "symptom_ids": [6],
+      "diagnostic_steps": [
+        "Check the battery voltage",
+        "If the voltage is below 11V try charging it",
+        "If the voltage is still low after charging it or if the battery can be discharged too quickly - replace the battery"
+      ]
+    },
+	{
+      "id": 16,
+      "name": "Air in clutch hydraulic lines (if hydraulic)",
+      "category": "transmission/clutch",
+      "severity": "high",
+      "base_probability": 0.3,
+      "symptom_ids": [12, 16, 18],
+      "diagnostic_steps": [
+        "Bleed the clutch's hydraulic system and add brake fluid if needed",
+        "Test again"
+      ]
+    },
+	{
+      "id": 17,
+      "name": "Slipping/worn clutch",
+      "category": "transmission/clutch",
+      "severity": "high",
+      "base_probability": 0.4,
+      "symptom_ids": [10, 16, 19, 37],
+      "diagnostic_steps": [
         "",
         ""
       ]

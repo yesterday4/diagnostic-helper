@@ -1,10 +1,11 @@
 import json
-from classes import Symptom, Problem
+from classes import Symptom, ProblemFactory
 
 class Loader:
     def __init__(self):
         with open('symptoms_problems.json', 'r') as f:
             self.d = json.load(f)
+            self.problem_factory = ProblemFactory()
 
     def load_symptoms(self):
         symptoms = []
@@ -16,6 +17,6 @@ class Loader:
     def load_problems(self):
         problems = []
         for problem in self.d["problems"]:
-            p = Problem(problem["id"], problem["name"], problem["category"], problem["severity"], problem["base_probability"], problem["symptom_ids"], problem["diagnostic_steps"])
+            p = self.problem_factory.create_problem(problem)
             problems.append(p)
         return problems

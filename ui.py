@@ -76,3 +76,35 @@ class Display:
         for symptom in possible_symptoms:
             print(f"{i}. {symptom.description}")
             i += 1
+        while True:
+            try:
+                chosen_symptoms_ids = []
+                input_numbers = input("Please choose the symptom/s, separated by spaces: ")
+                input_numbers = input_numbers.split()
+                for number in input_numbers:
+                    number = int(number)
+                    chosen_symptom = self.validate_choice(number, possible_symptoms)
+                    chosen_symptoms_ids.append(possible_symptoms[chosen_symptom-1].id)
+                break
+            except ValueError:
+                print("you can only input a number")
+            except ValidationError as e:
+                print(e.message)
+        return chosen_symptoms_ids
+    
+    def display_results(self, results):
+        for result in results:
+            print(f"Your problem might be: {result[0].name}, with a probability of {result[1] * 100:.1f}%")
+            print(f"{result[0].get_warning()}")
+            print(f"The severity of this problem is: {result[0].severity.value}")
+            print("Try these steps:")
+            i = 1
+            for step in result[0].diagnostic_steps:
+                print(f"{i}. {step}")
+                i += 1
+            print("-" * 30)
+    
+    def run(self):
+        chosen_symptom_ids = self.display_choose_symptoms()
+        results = self.diagnostic_engine.diagnose(chosen_symptom_ids)
+        self.display_results(results)

@@ -99,7 +99,7 @@ class Display:
             print(f"The severity of this problem is: {result[0].severity.value}")
             print("Try these steps:")
             i = 1
-            for step in result[0].diagnostic_steps:
+            for step in result[0].diag_steps:
                 print(f"{i}. {step}")
                 i += 1
             print("-" * 30)

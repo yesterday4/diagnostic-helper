@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class Severity(Enum):
     LOW = "low"
-    MEDIUM = "medium"
+    MODERATE = "moderate"
     HIGH = "high"
 
 class ProblemType(Enum):

@@ -4,10 +4,10 @@
 	{"id": 2, "description": "squeaking noise when driving over bumps", "categories": ["suspension/steering"]},
 	{"id": 3, "description": "engine rpm's are unstable", "categories": ["engine"]},
 	{"id": 4, "description": "droning sound while moving", "categories": ["suspension/steering"]},
-	{"id": 5, "description": "crackling sound when moving with steering wheel turned", "categories": ["suspension/steering"]},
+	{"id": 5, "description": "crackling sound when moving with the steering wheel turned", "categories": ["suspension/steering"]},
 	{"id": 6, "description": "clicking sound when trying to start the engine and the starter does not turn", "categories": ["engine", "electrical/lighting"]},
 	{"id": 7, "description": "squealing sound when engine is on", "categories": ["engine"]},
-	{"id": 8, "description": "", "categories": [""]},
+	{"id": 8, "description": "steering wheel/whole car vibrates at higher speed", "categories": ["suspension/steering", "tyres/wheels"]},
 	{"id": 9, "description": "steering wheel vibrates when moving", "categories": ["suspension/steering", "tyres/wheels"]},
 	{"id": 10, "description": "squealing while moving", "categories": ["brakes", "suspension/steering", "engine"]},
 	{"id": 11, "description": "ticking sound when engine is on", "categories": ["engine"]},
@@ -52,6 +52,7 @@
       "id": 1,
       "name": "Worn brake pads",
       "category": "brakes",
+      "problem_type": "safety_critical",
       "severity": "high",
       "base_probability": 0.8,
       "symptom_ids": [10, 13, 17, 24],
@@ -67,6 +68,7 @@
       "id": 2,
       "name": "Warped front brake rotors",
       "category": "brakes",
+      "problem_type": "non_critical",
       "severity": "moderate",
       "base_probability": 0.6,
       "symptom_ids": [43],
@@ -76,10 +78,11 @@
         "Replace the rotors if needed"
       ]
     },
-	{
+	  {
       "id": 3,
       "name": "Warped rear brake rotors",
       "category": "brakes",
+      "problem_type": "non_critical",
       "severity": "moderate",
       "base_probability": 0.6,
       "symptom_ids": [44],
@@ -89,10 +92,11 @@
         "Replace the rotors if needed"
       ]
     },
-	{
+	  {
       "id": 4,
       "name": "Seized brake caliper piston/slide pins",
       "category": "brakes",
+      "problem_type": "safety_critical",
       "severity": "high",
       "base_probability": 0.65,
       "symptom_ids": [10, 14, 32],
@@ -102,10 +106,11 @@
         "Replace/regrease the necessary parts"
       ]
     },
-	{
+	  {
       "id": 5,
       "name": "Fuel/compression/spark problems",
       "category": "engine",
+      "problem_type": "mechanically_critical",
       "severity": "high",
       "base_probability": 0.4,
       "symptom_ids": [1],
@@ -116,10 +121,11 @@
         "If it is a gasoline engine, check for spark"
       ]
     },
-	{
+	  {
       "id": 6,
       "name": "Worn/dry suspension bushings",
       "category": "suspension/steering",
+      "problem_type": "mechanically_critical",
       "severity": "moderate",
       "base_probability": 0.65,
       "symptom_ids": [2, 32],
@@ -129,22 +135,24 @@
         "If the bushings are too dry - spray them with silicon grease"
       ]
     },
-	{
+	  {
       "id": 7,
       "name": "Blown head gasket",
       "category": "engine",
+      "problem_type": "mechanically_critical",
       "severity": "high",
       "base_probability": 0.3,
       "symptom_ids": [19, 20, 21, 22, 31, 38, 40, 45],
       "diagnostic_steps": [
         "Do a combustion gas test",
-        "If combustion gases are indeed present in the cooling system - replace the headgasket"
+        "If combustion gases are indeed present in the cooling system - replace the head gasket"
       ]
     },
-	{
+	  {
       "id": 8,
       "name": "Alternator has stopped working",
       "category": "electrical/lighting",
+      "problem_type": "mechanically_critical",
       "severity": "high",
       "base_probability": 0.5,
       "symptom_ids": [41, 42],
@@ -153,10 +161,11 @@
         "If the voltage is below 13.5V, and the serpentine belt is ok alternator repair/replacement is needed"
       ]
     },
-	{
+	  {
       "id": 9,
       "name": "Leak in the exhaust system",
       "category": "engine",
+      "problem_type": "non_critical",
       "severity": "moderate",
       "base_probability": 0.6,
       "symptom_ids": [21, 25, 33],
@@ -165,10 +174,11 @@
         "Repair/replace any components if needed"
       ]
     },
-	{
+	  {
       "id": 10,
       "name": "Leak in the intake system",
       "category": "engine",
+      "problem_type": "mechanically_critical",
       "severity": "high",
       "base_probability": 0.4,
       "symptom_ids": [3, 19, 21, 23],
@@ -178,10 +188,11 @@
         "Repair/replace any components if needed"
       ]
     },
-	{
+	  {
       "id": 11,
       "name": "Worn/degraded tyres",
       "category": "tyres/wheels",
+      "problem_type": "safety_critical",
       "severity": "high",
       "base_probability": 0.75,
       "symptom_ids": [24, 27, 28],
@@ -192,10 +203,11 @@
 		"Replace the tyres if needed"
       ]
     },
-	{
+	  {
       "id": 12,
       "name": "Worn wheel bearing",
       "category": "suspension/steering",
+      "problem_type": "safety_critical",
       "severity": "high",
       "base_probability": 0.6,
       "symptom_ids": [4, 5, 9, 14],
@@ -205,10 +217,11 @@
         "Replace the bearing if needed"
       ]
     },
-	{
+	  {
       "id": 13,
       "name": "Worn CV joint",
       "category": "suspension/steering",
+      "problem_type": "mechanically_critical",
       "severity": "moderate",
       "base_probability": 0.5,
       "symptom_ids": [5],
@@ -218,10 +231,11 @@
         "If needed replace and regrease the CV joint and boot"
       ]
     },
-	{
+	  {
       "id": 14,
       "name": "Leaking fuel injector",
       "category": "engine",
+      "problem_type": "mechanically_critical",
       "severity": "high",
       "base_probability": 0.35,
       "symptom_ids": [3, 19, 21, 25, 38, 39],
@@ -230,10 +244,11 @@
         "If 02 values are low - send the injectors for testing"
       ]
     },
-	{
+	  {
       "id": 15,
       "name": "Discharged/bad battery",
       "category": "electrical/lighting",
+      "problem_type": "non_critical",
       "severity": "high",
       "base_probability": 0.7,
       "symptom_ids": [6],
@@ -243,10 +258,11 @@
         "If the voltage is still low after charging it or if the battery can be discharged too quickly - replace the battery"
       ]
     },
-	{
+	  {
       "id": 16,
       "name": "Air in clutch hydraulic lines (if hydraulic)",
       "category": "transmission/clutch",
+      "problem_type": "mechanically_critical",
       "severity": "high",
       "base_probability": 0.3,
       "symptom_ids": [12, 16, 18],
@@ -255,10 +271,11 @@
         "Test again"
       ]
     },
-	{
+	  {
       "id": 17,
       "name": "Slipping/worn clutch",
       "category": "transmission/clutch",
+      "problem_type": "mechanically_critical",
       "severity": "high",
       "base_probability": 0.4,
       "symptom_ids": [10, 16, 19, 37],
@@ -267,5 +284,31 @@
         ""
       ]
     },
+    {
+      "id": 18,
+      "name": "Worn auxiliary belt/belt tensioner",
+      "category": "engine",
+      "problem_type": "mechanically_critical",
+      "severity": "moderate",
+      "base_probability": 0.5,
+      "symptom_ids": [7],
+      "diagnostic_steps": [
+        "Check for movement on the auxiliary belt with the engine on",
+        "If movement is present - replace the tensioner",
+        "If no significant movement is present but the noise disappears after spraying the belt with water - replace the belt"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Unbalanced / improperly balanced wheels",
+      "category": "tyres/wheels",
+      "problem_type": "mechanically_critical",
+      "severity": "low",
+      "base_probability": 0.4,
+      "symptom_ids": [8],
+      "diagnostic_steps": [
+        "Rebalance the wheels"
+      ]
+    }
   ]
 }

@@ -1,5 +1,6 @@
 import json
-from classes import Symptom, ProblemFactory
+from symptom import Symptom
+from problem import ProblemFactory
 
 class Loader:
     def __init__(self):

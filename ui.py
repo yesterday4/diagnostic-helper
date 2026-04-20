@@ -94,6 +94,7 @@ class Display:
     
     def display_results(self, results):
         for result in results:
+            print("-" * 30)
             print(f"Your problem might be: {result[0].name}, with a probability of {result[1] * 100:.1f}%")
             print(f"{result[0].get_warning()}")
             print(f"The severity of this problem is: {result[0].severity.value}")
@@ -102,7 +103,6 @@ class Display:
             for step in result[0].diag_steps:
                 print(f"{i}. {step}")
                 i += 1
-            print("-" * 30)
     
     def run(self):
         chosen_symptom_ids = self.display_choose_symptoms()

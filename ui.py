@@ -103,8 +103,18 @@ class Display:
             for step in result[0].diag_steps:
                 print(f"{i}. {step}")
                 i += 1
+
+    def validate_answer(self, answer):
+        if answer != "y" and answer != "n":
+            raise ValidationError("you can only input 'y' or 'n'", answer)
+        else:
+            return answer
     
     def run(self):
-        chosen_symptom_ids = self.display_choose_symptoms()
-        results = self.diagnostic_engine.diagnose(chosen_symptom_ids)
-        self.display_results(results)
+        while True:
+            chosen_symptom_ids = self.display_choose_symptoms()
+            results = self.diagnostic_engine.diagnose(chosen_symptom_ids)
+            self.display_results(results)
+            answer = self.validate_answer(input("Would you like to diagnose again? (y/n): "))
+            if answer == "n":
+                break

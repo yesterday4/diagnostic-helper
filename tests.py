@@ -61,30 +61,30 @@ class TestDiagnose(unittest.TestCase):
         self.problem_2 = SafetyCriticalProblem(2, "problem_2", "b", "low", 0.1, [4, 5, 6], [])
         self.diag_engine = DiagnosticEngine([self.problem_1, self.problem_2])
 
-    def test_diagnose_based_on_matching_ids_1(self):
+    def test_based_on_matching_ids_1(self):
         result = self.diag_engine.diagnose([1, 2, 3])
         self.assertEqual(result[0][0], self.problem_1)
         self.assertAlmostEqual(result[0][1], 0.1*1)
 
-    def test_diagnose_based_on_matching_ids_2(self):
+    def test_based_on_matching_ids_2(self):
         result = self.diag_engine.diagnose([4, 5, 6])
         self.assertEqual(result[0][0], self.problem_2)
         self.assertAlmostEqual(result[0][1], 0.1*1)
 
-    def test_diagnose_choosing_the_correct_problem_1(self):
+    def test_choosing_the_correct_problem_1(self):
         result = self.diag_engine.diagnose([3, 5, 6])
         self.assertEqual(result[0][0], self.problem_2)
         self.assertAlmostEqual(result[0][1], 0.1*(2/3))
 
-    def test_diagnose_choosing_the_correct_problem_2(self):
+    def test_choosing_the_correct_problem_2(self):
         result = self.diag_engine.diagnose([2, 3, 4])
         self.assertEqual(result[0][0], self.problem_1)
         self.assertAlmostEqual(result[0][1], 0.1*(2/3))
 
-    def test_diagnose_no_matching_problems(self):
+    def test_no_matching_problems(self):
         result = self.diag_engine.diagnose([7, 8, 9])
         self.assertEqual(result, [])
 
-    def test_diagnose_no_input_ids(self):
+    def test_no_input_ids(self):
         result = self.diag_engine.diagnose([])
         self.assertEqual(result, [])

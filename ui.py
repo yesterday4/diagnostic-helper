@@ -1,4 +1,5 @@
 from diagnostic_engine import DiagnosticEngine
+from data_logger import Logger
 
 class ValidationError(Exception):
     def __init__(self, message, value):
@@ -7,9 +8,10 @@ class ValidationError(Exception):
         super().__init__(message)
 
 class Display:
-    def __init__(self, symptoms, diagnostic_engine):
+    def __init__(self, symptoms, diagnostic_engine, logger):
         self.symptoms = symptoms
         self.diagnostic_engine = diagnostic_engine
+        self.logger = logger
 
     @property
     def symptoms(self):
@@ -30,6 +32,16 @@ class Display:
         if not isinstance(value, DiagnosticEngine):
             raise TypeError("diagnostic_engine must be an DiagnosticEngine")
         self._diagnostic_engine = value
+
+    @property
+    def logger(self):
+        return self._logger
+
+    @logger.setter
+    def logger(self, value):
+        if not isinstance(value, Logger):
+            raise TypeError("logger must be a Logger")
+        self._logger = value
 
     def display_categories(self):
         categories = []
@@ -121,6 +133,7 @@ class Display:
             chosen_symptom_ids = self.display_choose_symptoms()
             results = self.diagnostic_engine.diagnose(chosen_symptom_ids)
             self.display_results(results)
+            self.logger.save_results(results)
             while True:
                 try:
                     answer = self.validate_answer(input("Would you like to diagnose again? (y/n): "))

@@ -49,6 +49,7 @@ class Display:
             raise ValidationError("the number cannot be zero or negative", choice)
         elif choice > number_of_elements:
             raise ValidationError(f"the number cannot be higher than {number_of_elements}", choice)
+        
         else:
             return choice
     
@@ -81,6 +82,8 @@ class Display:
                 chosen_symptoms_ids = []
                 input_numbers = input("Please choose the symptom/s, separated by spaces: ")
                 input_numbers = input_numbers.split()
+                if not input_numbers:
+                    raise ValidationError("you must select at least one symptom", input_numbers)
                 for number in input_numbers:
                     number = int(number)
                     chosen_symptom = self.validate_choice(number, possible_symptoms)
@@ -93,16 +96,19 @@ class Display:
         return chosen_symptoms_ids
     
     def display_results(self, results):
-        for result in results:
-            print("-" * 30)
-            print(f"Your problem might be: {result[0].name}, with a probability of {result[1] * 100:.1f}%")
-            print(f"{result[0].get_warning()}")
-            print(f"The severity of this problem is: {result[0].severity.value}")
-            print("Try these steps:")
-            i = 1
-            for step in result[0].diag_steps:
-                print(f"{i}. {step}")
-                i += 1
+        if results:
+            for result in results:
+                print("-" * 30)
+                print(f"Your problem might be: {result[0].name}, with a probability of {result[1] * 100:.1f}%")
+                print(f"{result[0].get_warning()}")
+                print(f"The severity of this problem is: {result[0].severity.value}")
+                print("Try these steps:")
+                i = 1
+                for step in result[0].diag_steps:
+                    print(f"{i}. {step}")
+                    i += 1
+        else:
+            print("No problems match these symptoms")
 
     def validate_answer(self, answer):
         if answer != "y" and answer != "n":
@@ -115,6 +121,11 @@ class Display:
             chosen_symptom_ids = self.display_choose_symptoms()
             results = self.diagnostic_engine.diagnose(chosen_symptom_ids)
             self.display_results(results)
-            answer = self.validate_answer(input("Would you like to diagnose again? (y/n): "))
-            if answer == "n":
-                break
+            while True:
+                try:
+                    answer = self.validate_answer(input("Would you like to diagnose again? (y/n): "))
+                    if answer == "n":
+                        return
+                    break
+                except ValidationError as e:
+                    print(e.message)

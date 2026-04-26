@@ -6,10 +6,12 @@ class Severity(Enum):
     MODERATE = "moderate"
     HIGH = "high"
 
+
 class ProblemType(Enum):
     MECHANICALLY_CRITICAL = "mechanically_critical"
     SAFETY_CRITICAL = "safety_critical"
     NON_CRITICAL = "non_critical"
+
 
 class Problem(ABC):
     def __init__(self, id, name, category, severity, b_probability, symptom_ids, diag_steps):
@@ -98,57 +100,51 @@ class Problem(ABC):
     def get_warning(self):
         pass
 
-class SafetyCriticalProblem(Problem):
-    def __init__(self, id, name, category, severity, b_probability, symptom_ids, diag_steps):
-        super().__init__(id, name, category, severity, b_probability, symptom_ids, diag_steps)
 
+class SafetyCriticalProblem(Problem):
     def get_warning(self):
         return "Further operation of the car could lead to serious injury or death!!!"
-    
-class MechanicallyCriticalProblem(Problem):
-    def __init__(self, id, name, category, severity, b_probability, symptom_ids, diag_steps):
-        super().__init__(id, name, category, severity, b_probability, symptom_ids, diag_steps)
 
+
+class MechanicallyCriticalProblem(Problem):
     def get_warning(self):
         return "Further operation of the car could lead to further damage!"
-    
-class NonCriticalProblem(Problem):
-    def __init__(self, id, name, category, severity, b_probability, symptom_ids, diag_steps):
-        super().__init__(id, name, category, severity, b_probability, symptom_ids, diag_steps)
 
+
+class NonCriticalProblem(Problem):
     def get_warning(self):
         return "Further operation of the car has no serious risks."
-    
+
+
 class ProblemFactory:
     def create_problem(self, data):
         problem_type = ProblemType(data["problem_type"])
         if problem_type == ProblemType.MECHANICALLY_CRITICAL:
             return MechanicallyCriticalProblem(
-            data["id"],
-            data["name"],
-            data["category"],
-            data["severity"],
-            data["base_probability"],
-            data["symptom_ids"],
-            data["diagnostic_steps"])
+                data["id"],
+                data["name"],
+                data["category"],
+                data["severity"],
+                data["base_probability"],
+                data["symptom_ids"],
+                data["diagnostic_steps"])
         elif problem_type == ProblemType.SAFETY_CRITICAL:
             return SafetyCriticalProblem(
-            data["id"],
-            data["name"],
-            data["category"],
-            data["severity"],
-            data["base_probability"],
-            data["symptom_ids"],
-            data["diagnostic_steps"])
+                data["id"],
+                data["name"],
+                data["category"],
+                data["severity"],
+                data["base_probability"],
+                data["symptom_ids"],
+                data["diagnostic_steps"])
         elif problem_type == ProblemType.NON_CRITICAL:
             return NonCriticalProblem(
-            data["id"],
-            data["name"],
-            data["category"],
-            data["severity"],
-            data["base_probability"],
-            data["symptom_ids"],
-            data["diagnostic_steps"])
+                data["id"],
+                data["name"],
+                data["category"],
+                data["severity"],
+                data["base_probability"],
+                data["symptom_ids"],
+                data["diagnostic_steps"])
         else:
             raise ValueError(f"Unknown problem type: {problem_type}")
-        

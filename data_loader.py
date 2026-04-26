@@ -4,9 +4,9 @@ from problem import ProblemFactory
 
 class Loader:
     def __init__(self):
+        self.problem_factory = ProblemFactory()
         with open('symptoms_problems.json', 'r') as f:
             self.d = json.load(f)
-            self.problem_factory = ProblemFactory()
 
     def load_symptoms(self):
         symptoms = []

@@ -1,6 +1,7 @@
 import unittest
 from ui import Display, ValidationError
 from diagnostic_engine import DiagnosticEngine
+from data_logger import Logger
 from problem import SafetyCriticalProblem
 
 # "python -m unittest tests -v" for launching tests
@@ -8,7 +9,8 @@ from problem import SafetyCriticalProblem
 class TestValidateChoice(unittest.TestCase):
     def setUp(self):
         diag_engine = DiagnosticEngine([])
-        self.display = Display([], diag_engine)
+        logger = Logger()
+        self.display = Display([], diag_engine, logger)
 
     def test_valid_choice(self):
         result = self.display.validate_choice(2, ["a", "b", "c"])
@@ -26,10 +28,12 @@ class TestValidateChoice(unittest.TestCase):
         with self.assertRaises(ValidationError):
             self.display.validate_choice(4, ["a", "b", "c"])
 
+
 class TestValidateAnswer(unittest.TestCase):
     def setUp(self):
         diag_engine = DiagnosticEngine([])
-        self.display = Display([], diag_engine)
+        logger = Logger()
+        self.display = Display([], diag_engine, logger)
 
     def test_valid_answer_1(self):
         result = self.display.validate_answer("y")
@@ -54,6 +58,7 @@ class TestValidateAnswer(unittest.TestCase):
     def test_capital_letter_raises_error(self):
         with self.assertRaises(ValidationError):
             self.display.validate_answer("Y")
+
 
 class TestDiagnose(unittest.TestCase):
     def setUp(self):

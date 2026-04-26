@@ -7,6 +7,7 @@ class ValidationError(Exception):
         self.value = value
         super().__init__(message)
 
+
 class Display:
     def __init__(self, symptoms, diagnostic_engine, logger):
         self.symptoms = symptoms
@@ -61,9 +62,7 @@ class Display:
             raise ValidationError("the number cannot be zero or negative", choice)
         elif choice > number_of_elements:
             raise ValidationError(f"the number cannot be higher than {number_of_elements}", choice)
-        
-        else:
-            return choice
+        return choice
     
     def choose_category(self):
         categories = self.display_categories()
@@ -99,7 +98,7 @@ class Display:
                 for number in input_numbers:
                     number = int(number)
                     chosen_symptom = self.validate_choice(number, possible_symptoms)
-                    chosen_symptoms_ids.append(possible_symptoms[chosen_symptom-1].id)
+                    chosen_symptoms_ids.append(possible_symptoms[chosen_symptom - 1].id)
                 break
             except ValueError:
                 print("you can only input a number")
@@ -125,8 +124,7 @@ class Display:
     def validate_answer(self, answer):
         if answer != "y" and answer != "n":
             raise ValidationError("you can only input 'y' or 'n'", answer)
-        else:
-            return answer
+        return answer
     
     def run(self):
         while True:

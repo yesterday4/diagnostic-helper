@@ -280,8 +280,8 @@
       "base_probability": 0.4,
       "symptom_ids": [10, 16, 19, 37],
       "diagnostic_steps": [
-        "",
-        ""
+        "Stop completely and attempt to move in a higher gear than normal",
+        "If the car does not stall and does not move after the pedal is fully released replace the clutch"
       ]
     },
     {

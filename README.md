@@ -1,8 +1,8 @@
-# Car Diagnostic Helper — Report
+# diagnostic-helper
 
 ---
 
-## 1. Introduction
+## 1.
 
 ### a) What is this application?
 
@@ -49,7 +49,7 @@ All diagnostic results with timestamps are also saved to `diagnostic_history.txt
 
 ---
 
-## 2. Body / Analysis
+## 2.
 
 ### The Four OOP Pillars
 
@@ -207,7 +207,7 @@ def save_results(self, results):
 
 ---
 
-## 3. Results and Summary
+## 3.
 
 ### a) Results
 
